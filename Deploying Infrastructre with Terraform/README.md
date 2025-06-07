@@ -7,7 +7,7 @@
 # Resources in Terraform
 - Resource block describes one or more infrastructure objects.
 e.g.
-```
+```hcl
 resource "aws_instance" "myec2" {
     ami = ""
     instance_type = ""
