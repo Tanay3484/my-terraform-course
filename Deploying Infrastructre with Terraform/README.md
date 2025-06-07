@@ -21,10 +21,49 @@ resource "aws_instance" "myec2" {
 > You can only use the resource that are supported by a specific provider.
 
 # Provider Namespace
-$$\textcolor{orange}{\text{Namespaces}}$$ are used to help users identify the organization or publisher responsible for the integration.
+$\textcolor{orange}{\text{Namespaces}}$ are used to help users identify the organization or publisher responsible for the integration.
 
 | Tier       | Description                                                            |
 | -----------| -------------                                                          |
 | Official   |  hashicorp                                                             |
 | Partner    | Third party organization (e.g. mongodb/monogodbatlas)                  |
 | Community  | Maintainer's individual or organization account (e.g. DeviaVir/gsuite) |
+
+> [!INFO]
+> Terraform requires explicit source information for any providers that are not HashiCorp-maintained, using a new syntax in the required_providers nested block inside the terraform configuration block.
+
+<table>
+<tr>
+<td> HashiCorp Maintained </td> <td> Non-HashiCorp Maintained </td>
+</tr>
+<tr>
+<td>
+
+```terraform
+provider "aws" {
+    region     = "us-west-2"
+    access_key = ""
+    secret_key = ""
+}
+```
+
+</td>
+<td>
+
+```terraform
+terraform {
+    required_providers {
+        digitalocean = {
+            source = "digitalocean/digitalocean"
+        }
+    }
+}
+
+provider "digitalocean" {
+    token = "PUT-YOUR-TOKEN-HERE"
+}
+```
+
+</td>
+</tr>
+</table>
