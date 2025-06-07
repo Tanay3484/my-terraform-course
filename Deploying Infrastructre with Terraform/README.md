@@ -19,3 +19,12 @@ resource "aws_instance" "myec2" {
 > [!NOTE]
 > Resource type and name together serve as an identifier for a given resource and so must be unique
 > You can only use the resource that are supported by a specific provider.
+
+# Provider Namespace
+<span style="color:orange">Namespaces</span> are used to help users identify the organization or publisher responsible for the integration.
+
+| Tier       | Description                                                            |
+| -----------| -------------                                                          |
+| Official   |  hashicorp                                                             |
+| Partner    | Third party organization (e.g. mongodb/monogodbatlas)                  |
+| Community  | Maintainer's individual or organization account (e.g. DeviaVir/gsuite) |
