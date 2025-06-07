@@ -66,3 +66,58 @@ provider "digitalocean" {
 > </td>
 > </tr>
 > </table>
+
+# Learning to Destroy Resources
+If you keep the infrastructre running, you will get charged for it.
+
+Hence it is important for us to also know on how we can delete the infrastructre resources created via terraform.
+
+## Approach 1 - Destroy ALL
+`terraform destroy` allows us to destroy all the resource that are created within the folder.
+
+## Approach 2 - Destroy Some
+terraform destroy with `-target flag` allows us to destroy specific resource. <br/>
+The `-target` option can be used to focus Terraform's attention on only a subset of resources.<br/>
+Combination of : Resource Type + Local Resource name.
+<br/>
+In our example:
+
+|Resource Type    | Local Resource Name    |
+|-----------------| -----------------------|
+|aws_instance     | myec2                  |
+|github_repository| terraform-example-repo |
+
+<br/>
+
+The below example deletes only the github repo.
+```
+terraform destroy -target github_repository.terraform-example-repo
+```
+
+# State File
+Terraform stores the state of the infrastructure that is being created from the TF files.<br/>
+This state allows terraform to map real world resource to your existing configuration.<br/>
+> [!TIP]
+> When you destory a resource, the associated state file of that resource is destroyed as well.
+
+# Desired & Current State
+
+## Desired State
+- Terraform's primary function is to create, modify, and destroy infrastructure resources to match the desired state described in a Terraform configuration.
+- Desired state is the state defined in your terraform file. For example if you are trying to create an EC2 instance, the desired state as defined in your code will be : 
+```terraform
+resource "aws_instance" "myec2" {
+    ami           = "ami-<hexa no.>"
+    instance_type = "t2.micro"
+}
+```
+
+## Current State
+- Current state is the actual state of a reasource that is currently deployed.
+> [!NOTE]
+> It is not always considered that Desired State == Current State
+> For e.g., you might have the `instance_type` as `t2.micro` in your Desired state, but someone could manually edit the instance type from AWS UI, in which case your Desired State != Current State.
+
+> [!IMPORTANT]
+> Terraform tries to ensure that the deployed infrastructre is based on the desired state.
+> If there is a difference between the two, `terraform plan` presents a description of the changes necessary to achieve the desired state.
