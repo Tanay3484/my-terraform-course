@@ -31,7 +31,6 @@ $\textcolor{orange}{\text{Namespaces}}$ are used to help users identify the orga
 
 > [!IMPORTANT]
 > Terraform requires explicit source information for any providers that are not HashiCorp-maintained, using a new syntax in the required_providers nested block inside the terraform configuration block.
-
 <table>
 <tr>
 <td> HashiCorp Maintained </td> <td> Non-HashiCorp Maintained </td>
