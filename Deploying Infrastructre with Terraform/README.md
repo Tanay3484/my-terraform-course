@@ -29,7 +29,7 @@ $\textcolor{orange}{\text{Namespaces}}$ are used to help users identify the orga
 | Partner    | Third party organization (e.g. mongodb/monogodbatlas)                  |
 | Community  | Maintainer's individual or organization account (e.g. DeviaVir/gsuite) |
 
-> [!INFO]
+> [!IMPORTANT]
 > Terraform requires explicit source information for any providers that are not HashiCorp-maintained, using a new syntax in the required_providers nested block inside the terraform configuration block.
 
 <table>
