@@ -21,7 +21,7 @@ resource "aws_instance" "myec2" {
 > You can only use the resource that are supported by a specific provider.
 
 # Provider Namespace
-${\color{orange}Namespaces}$ are used to help users identify the organization or publisher responsible for the integration.
+$\textcolor{orange}{\text{Namespaces}}$ are used to help users identify the organization or publisher responsible for the integration.
 
 | Tier       | Description                                                            |
 | -----------| -------------                                                          |
